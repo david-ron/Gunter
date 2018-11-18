@@ -1,17 +1,29 @@
 package model;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
-public class Resume {
 
+public class Resume {
+    @JsonProperty("f_name")
     private String FirstName;
+    @JsonProperty("l_name")
     private String LastName;
+    @JsonProperty("age")
     private String Age;
+    @JsonProperty("nation")
     private String Nationality;
+    @JsonProperty("cotact")
     private String ContactInfo;
+    @JsonProperty("work_exp")
     private ArrayList<String> WorkExperence;
+    @JsonProperty("edu_bac")
     private ArrayList<String> EducationBackground;
+    @JsonProperty("ski_tal")
     private ArrayList<String> SkillsOrTalent;
+    @JsonProperty("honor_awa")
     private ArrayList<String> HonoraryAndAward;
+    @JsonProperty("selfIntro")
     private String SelfIntroduction;
     public String getFirstName() {
         return FirstName;
