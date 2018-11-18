@@ -26,7 +26,7 @@ public class RequestController {
     }
 
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload", produces = { "application/json" }, method = RequestMethod.POST)
     public @ResponseBody ResponseEntity translate(@RequestBody Resume resume){
         //TODO
 
