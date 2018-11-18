@@ -1,5 +1,7 @@
 package model;
 import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Resume {
@@ -8,20 +10,16 @@ public class Resume {
     private String FirstName;
     @JsonProperty("l_name")
     private String LastName;
-    @JsonProperty("age")
-    private String Age;
-    @JsonProperty("nation")
-    private String Nationality;
     @JsonProperty("cotact")
     private String ContactInfo;
     @JsonProperty("work_exp")
-    private ArrayList<String> WorkExperence;
+    private List<WorkExperience> WorkExperience;
     @JsonProperty("edu_bac")
-    private ArrayList<String> EducationBackground;
+    private List<EducationBackground> EducationBackground;
     @JsonProperty("ski_tal")
     private ArrayList<String> SkillsOrTalent;
     @JsonProperty("honor_awa")
-    private ArrayList<String> HonoraryAndAward;
+    private List<HonoraryAndAward> HonoraryAndAward;
     @JsonProperty("selfIntro")
     private String SelfIntroduction;
     @JsonProperty("address")
@@ -31,6 +29,12 @@ public class Resume {
     @JsonProperty("tar_pos")
     private ArrayList<String> targetPosition;
 
+    Resume(){
+        SkillsOrTalent = new ArrayList<>();
+        targetPosition = new ArrayList<>();
+
+
+    }
 
     public ArrayList<String> getTargetPosition(){return targetPosition;}
 
@@ -62,14 +66,6 @@ public class Resume {
         LastName = lastName;
     }
 
-    public String getNationality() {
-        return Nationality;
-    }
-
-    public void setNationality(String nationality) {
-        Nationality = nationality;
-    }
-
     public String getContactInfo() {
         return ContactInfo;
     }
@@ -78,21 +74,7 @@ public class Resume {
         ContactInfo = contactInfo;
     }
 
-    public ArrayList<String> getWorkExperence() {
-        return WorkExperence;
-    }
 
-    public void setWorkExperence(ArrayList<String> workExperence) {
-        WorkExperence = workExperence;
-    }
-
-    public ArrayList<String> getEducationBackground() {
-        return EducationBackground;
-    }
-
-    public void setEducationBackground(ArrayList<String> educationBackground) {
-        EducationBackground = educationBackground;
-    }
 
     public ArrayList<String> getSkillsOrTalent() {
         return SkillsOrTalent;
@@ -102,13 +84,6 @@ public class Resume {
         SkillsOrTalent = skillsOrTalent;
     }
 
-    public ArrayList<String> getHonoraryAndAward() {
-        return HonoraryAndAward;
-    }
-
-    public void setHonoraryAndAward(ArrayList<String> honoraryAndAward) {
-        HonoraryAndAward = honoraryAndAward;
-    }
 
     public String getSelfIntroduction() {
         return SelfIntroduction;
@@ -116,5 +91,28 @@ public class Resume {
 
     public void setSelfIntroduction(String selfIntroduction) {
         SelfIntroduction = selfIntroduction;
+    }
+    public List<WorkExperience> getWorkExperience() {
+        return WorkExperience;
+    }
+
+    public void setWorkExperience(List<WorkExperience> workExperience) {
+        WorkExperience = workExperience;
+    }
+
+    public List<EducationBackground> getEducationBackground() {
+        return EducationBackground;
+    }
+
+    public void setEducationBackground(List<EducationBackground> educationBackground) {
+        EducationBackground = educationBackground;
+    }
+
+    public List<HonoraryAndAward> getHonoraryAndAward() {
+        return HonoraryAndAward;
+    }
+
+    public void setHonoraryAndAward(List<HonoraryAndAward> honoraryAndAward) {
+        HonoraryAndAward = honoraryAndAward;
     }
 }
