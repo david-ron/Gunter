@@ -30,6 +30,10 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.4'
     compile 'com.google.cloud:google-cloud-translate:1.51.0'
+
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+
 }
 
 

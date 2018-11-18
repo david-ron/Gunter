@@ -17,11 +17,10 @@ public class ImageStringMaker {
 
         String pyPath = new File("src/main/java/ImageToString/script_python.py").getAbsolutePath();
 
-        ProcessBuilder ps=new ProcessBuilder("python3",
-                pyPath,path);
+        ProcessBuilder ps = new ProcessBuilder("python3",
+                pyPath, path);
 
         PrintWriter writer = new PrintWriter("output.txt", "UTF-8");
-
 
 
         ps.redirectErrorStream(true);
@@ -39,3 +38,4 @@ public class ImageStringMaker {
         in.close();
         System.exit(0);
     }
+}

@@ -4,6 +4,7 @@ package controller;
 import Generator.Generator;
 import com.itextpdf.text.DocumentException;
 import model.*;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -11,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
@@ -30,11 +31,11 @@ public class RequestController {
     }
 
 
-    @RequestMapping(value = "/upload", produces = { "application/json" }, method = RequestMethod.POST)
-    public @ResponseBody ResponseEntity translate(@RequestBody Resume resume){
+    @RequestMapping(value = "/upload",  method = RequestMethod.POST)
+    public @ResponseBody ResponseEntity translate(@RequestBody Resume resume) throws IOException {
         
-        translateReseum(resume);
-        String filename = "test.pdf";
+//        translateReseum(resume);
+        String filename = "translatedCV.pdf";
 
         logger.info(resume.getFirstName());
         logger.info(resume.getLastName());
@@ -46,16 +47,22 @@ public class RequestController {
             generator.generate();
         } catch (IOException ex){
             ex.getStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         } catch (DocumentException ex){
             ex.getStackTrace();
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
 
-        byte[] out = new byte[10];
+        FileInputStream fin = new FileInputStream(filename);
+        byte[] out = IOUtils.toByteArray(fin);
 
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("content-disposition", "attachment; filename=" + filename);
         responseHeaders.add("Content-Type", "application/pdf");
+
+
+//        logger.info(IOUtils.toString(out, "UTF-8"));
 
         return new ResponseEntity(out, responseHeaders, HttpStatus.OK);
     }
