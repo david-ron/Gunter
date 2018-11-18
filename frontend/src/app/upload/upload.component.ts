@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Resume } from '../model/Resume';
 import { EduBackground } from "../model/EduBackground";
 import { TranslateService } from '../service/translate.service';
+import saveAs from 'file-saver';
 
 @Component({
   selector: 'app-upload',
@@ -21,12 +22,12 @@ export class UploadComponent implements OnInit {
   // });
 
   public resume: Resume = {
-    firstname : "",
-    lastname : "",
-    work: [{name: "567", startTime: new Date(), endTime: new Date(), description: ""}],
-    edu: [{name: "123", startTime: new Date(), endTime: new Date(), degree: ""}],
+    firstname: "",
+    lastname: "",
+    work: [{ name: "567", startTime: new Date(), endTime: new Date(), description: "" }],
+    edu: [{ name: "123", startTime: new Date(), endTime: new Date(), degree: "" }],
     skills: ["testskill"],
-    awards: [{name: "test", time: new Date(), award: "first prize"}],
+    awards: [{ name: "test", time: new Date(), award: "first prize" }],
     email: "",
     contact: "",
     addr: ""
@@ -37,10 +38,17 @@ export class UploadComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleClick(event: any){
-    console.log(this.resume);
-    this.translateService.translate(this.resume).subscribe(ret => {
-      console.log(ret);}
+  handleClick(event: any) {
+    this.translateService.translate(this.resume).subscribe(response => {
+      console.log(response);
+
+      var blob = new Blob([response]);
+      var filename = './translatedCV.pdf';
+      saveAs(blob, filename);
+    },
+      error => {
+        console.error(`Error: ${error.message}`);
+      }
     );
   }
 

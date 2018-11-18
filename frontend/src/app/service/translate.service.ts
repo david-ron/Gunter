@@ -2,11 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Resume } from '../model/Resume';
+import { RequestOptions, Request, RequestMethod, ResponseContentType } from '@angular/http';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json',
-                              'Access-Control-Allow-Origin': 'localhost:4200' })
-};
 
 
 @Injectable({
@@ -18,8 +15,10 @@ export class TranslateService {
 
   constructor(private http: HttpClient) { }
 
-  translate(resume: Resume) : Observable<Blob> {
+  translate(resume: Resume) : Observable<any> {
     console.log(resume);
-      return this.http.post<Blob>(this.hostUrl, resume, httpOptions);
+      return this.http.post(this.hostUrl, JSON.stringify(resume), {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+        responseType: 'blob'});
   }
 }
