@@ -1,3 +1,4 @@
+package Generator;
 import com.itextpdf.text.*;
 
 import com.itextpdf.text.pdf.PdfWriter;
@@ -5,22 +6,26 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import model.EducationBackground;
+import model.HonoraryAndAward;
+import model.Resume;
+import model.WorkExperience;
+
 public class Generator {
 
     private Resume resume;
+    private String fileName;
 
-    public Generator(){
-        resume = new Resume();
-    }
+    public Generator(String fileName){this.fileName = fileName;}
 
     public Resume getResume(){
         return resume;
     }
+    public void setResume(Resume resume){this.resume = resume;}
 
     public void generate() throws IOException, DocumentException{
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream("createSamplePDF.pdf"));
-
+        PdfWriter.getInstance(document, new FileOutputStream(fileName));
 
         document.open();
 
@@ -39,20 +44,31 @@ public class Generator {
         Paragraph edu = new Paragraph("Education  background: ");
         document.add(edu);
 
-        for (String key : resume.getEducationBackground()) {
-            Chunk eduChunk = new Chunk("        " + key);
-            document.add(eduChunk);
+        for (EducationBackground key : resume.getEducationBackground()) {
+            Chunk start = new Chunk("        StartTime: " + key.startTime);
+            document.add(start);
+            Chunk end = new Chunk("        EndTime: " + key.endTime);
+            document.add(end);
+            Chunk deg = new Chunk("        Degree: " + key.degree);
+            document.add(deg);
+            Chunk school = new Chunk("        SchoolName: " + key.schoolName);
+            document.add(school);
 
             document.add(Chunk.NEWLINE);
             document.add(Chunk.NEWLINE);
         }
 
-
         Paragraph work = new Paragraph("Working experiences: ");
         document.add(work);
-        for (String key : resume.getWorkExperence()) {
-            Chunk eduChunk = new Chunk("        " + key);
-            document.add(eduChunk);
+        for (WorkExperience key : resume.getWorkExperience()) {
+            Chunk companyName = new Chunk("        CompanyName: " + key.companyName);
+            document.add(companyName);
+            Chunk start = new Chunk("        StartTime: " + key.start_time);
+            document.add(start);
+            Chunk end = new Chunk("        EndTime: " + key.end_time);
+            document.add(end);
+            Chunk Des = new Chunk("        Description: " + key.description);
+            document.add(Des);
 
             document.add(Chunk.NEWLINE);
             document.add(Chunk.NEWLINE);
@@ -60,9 +76,14 @@ public class Generator {
 
         Paragraph award = new Paragraph("Honorary and award: ");
         document.add(award);
-        for (String key : resume.getHonoraryAndAward()) {
-            Chunk eduChunk = new Chunk("        " + key);
-            document.add(eduChunk);
+
+        for (HonoraryAndAward key : resume.getHonoraryAndAward()) {
+            Chunk time = new Chunk("        Time" + key.time);
+            document.add(time);
+            Chunk anyAward = new Chunk("        Award" + key.award);
+            document.add(anyAward);
+            Chunk com = new Chunk("        CompetitionName" + key.competitionName);
+            document.add(com);
 
             document.add(Chunk.NEWLINE);
             document.add(Chunk.NEWLINE);
