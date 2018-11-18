@@ -34,24 +34,24 @@ public class Generator {
         document.add(name);
         document.add(Chunk.NEWLINE);
 
-        Chunk info = new Chunk("Telephone: " + resume.getContactInfo() + "           " + "Email: " + resume.getEmail() + "\n" +
+        Chunk info = new Chunk("Telephone: " + resume.getContactInfo() + "\n" + "           " + "Email: " + resume.getEmail() + "\n" +
                 "Address: " +  resume.getAddress());
 
         document.add(info);
         document.add(Chunk.NEWLINE);
         document.add(Chunk.NEWLINE);
 
-        Paragraph edu = new Paragraph("Education  background: ");
+        Paragraph edu = new Paragraph("Education  background: ", FontFactory.getFont(FontFactory.COURIER,15));
         document.add(edu);
 
         for (EducationBackground key : resume.getEducationBackground()) {
-            Chunk start = new Chunk("        StartTime: " + key.startTime);
+            Chunk start = new Chunk("        StartTime: " + key.getStartTime());
             document.add(start);
-            Chunk end = new Chunk("        EndTime: " + key.endTime);
+            Chunk end = new Chunk("        EndTime: " + key.getEndTime());
             document.add(end);
-            Chunk deg = new Chunk("        Degree: " + key.degree);
+            Chunk deg = new Chunk("        Degree: " + key.getDegree());
             document.add(deg);
-            Chunk school = new Chunk("        SchoolName: " + key.schoolName);
+            Chunk school = new Chunk("        SchoolName: " + key.getSchoolName());
             document.add(school);
 
             document.add(Chunk.NEWLINE);
@@ -61,13 +61,13 @@ public class Generator {
         Paragraph work = new Paragraph("Working experiences: ");
         document.add(work);
         for (WorkExperience key : resume.getWorkExperience()) {
-            Chunk companyName = new Chunk("        CompanyName: " + key.companyName);
+            Chunk companyName = new Chunk("        CompanyName: " + key.getCompanyName());
             document.add(companyName);
-            Chunk start = new Chunk("        StartTime: " + key.start_time);
+            Chunk start = new Chunk("        StartTime: " + key.getStart_time());
             document.add(start);
-            Chunk end = new Chunk("        EndTime: " + key.end_time);
+            Chunk end = new Chunk("        EndTime: " + key.getEnd_time());
             document.add(end);
-            Chunk Des = new Chunk("        Description: " + key.description);
+            Chunk Des = new Chunk("        Description: " + key.getDescription());
             document.add(Des);
 
             document.add(Chunk.NEWLINE);
@@ -78,11 +78,11 @@ public class Generator {
         document.add(award);
 
         for (HonoraryAndAward key : resume.getHonoraryAndAward()) {
-            Chunk time = new Chunk("        Time" + key.time);
+            Chunk time = new Chunk("        Time" + key.getTime());
             document.add(time);
-            Chunk anyAward = new Chunk("        Award" + key.award);
+            Chunk anyAward = new Chunk("        Award" + key.getAward());
             document.add(anyAward);
-            Chunk com = new Chunk("        CompetitionName" + key.competitionName);
+            Chunk com = new Chunk("        CompetitionName" + key.getCompetitionName());
             document.add(com);
 
             document.add(Chunk.NEWLINE);
