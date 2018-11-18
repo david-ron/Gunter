@@ -1,10 +1,9 @@
 package model;
+import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-
-
 public class Resume {
+
     @JsonProperty("f_name")
     private String FirstName;
     @JsonProperty("l_name")
@@ -25,6 +24,28 @@ public class Resume {
     private ArrayList<String> HonoraryAndAward;
     @JsonProperty("selfIntro")
     private String SelfIntroduction;
+    @JsonProperty("address")
+    private String address;
+    @JsonProperty("email")
+    private String email;
+    @JsonProperty("tar_pos")
+    private ArrayList<String> targetPosition;
+
+
+    public ArrayList<String> getTargetPosition(){return targetPosition;}
+
+    public void setTargetPosition(ArrayList<String> targetPosition){
+        this.targetPosition = targetPosition;
+    }
+
+    public String getAddress(){return address;}
+
+    public void setAddress(String address){this.address = address;}
+
+    public String getEmail(){ return email;}
+
+    public void setEmail(String email) { this.email = email;}
+
     public String getFirstName() {
         return FirstName;
     }
@@ -39,14 +60,6 @@ public class Resume {
 
     public void setLastName(String lastName) {
         LastName = lastName;
-    }
-
-    public String getAge() {
-        return Age;
-    }
-
-    public void setAge(String age) {
-        Age = age;
     }
 
     public String getNationality() {
@@ -104,9 +117,4 @@ public class Resume {
     public void setSelfIntroduction(String selfIntroduction) {
         SelfIntroduction = selfIntroduction;
     }
-
-
-
-
-
 }
