@@ -34,7 +34,7 @@ public class RequestController {
     @RequestMapping(value = "/upload",  method = RequestMethod.POST)
     public @ResponseBody ResponseEntity translate(@RequestBody Resume resume) throws IOException {
         
-//        translateReseum(resume);
+        translateReseum(resume);
         String filename = "translatedCV.pdf";
 
         logger.info(resume.getFirstName());
