@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 public class RequestController {
 
@@ -30,12 +31,16 @@ public class RequestController {
     public @ResponseBody ResponseEntity translate(@RequestBody Resume resume){
         //TODO
 
+        logger.info(resume.getFirstName());
+        logger.info(resume.getLastName());
+
+
         String filename = "test.pdf";
         byte[] out = new byte[10];
 
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("content-disposition", "attachment; filename=" + filename);
-        responseHeaders.add("Content-Type", "pdf");
+        responseHeaders.add("Content-Type", "application/pdf");
 
 
         return new ResponseEntity(out, responseHeaders, HttpStatus.OK);

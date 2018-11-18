@@ -6,30 +6,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Resume {
 
-    @JsonProperty("f_name")
+    @JsonProperty("firstname")
     private String FirstName;
-    @JsonProperty("l_name")
+    @JsonProperty("lastname")
     private String LastName;
-    @JsonProperty("cotact")
+    @JsonProperty("contact")
     private String ContactInfo;
-    @JsonProperty("work_exp")
+    @JsonProperty("work")
     private List<WorkExperience> WorkExperience;
-    @JsonProperty("edu_bac")
+    @JsonProperty("edu")
     private List<EducationBackground> EducationBackground;
-    @JsonProperty("ski_tal")
+    @JsonProperty("skills")
     private ArrayList<String> SkillsOrTalent;
-    @JsonProperty("honor_awa")
+    @JsonProperty("awards")
     private List<HonoraryAndAward> HonoraryAndAward;
-    @JsonProperty("selfIntro")
+//    @JsonProperty("selfIntro")
     private String SelfIntroduction;
-    @JsonProperty("address")
+    @JsonProperty("addr")
     private String address;
     @JsonProperty("email")
     private String email;
-    @JsonProperty("tar_pos")
+//    @JsonProperty("tar_pos")
     private ArrayList<String> targetPosition;
 
-    Resume(){
+    public Resume(){
         SkillsOrTalent = new ArrayList<>();
         targetPosition = new ArrayList<>();
 

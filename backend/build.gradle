@@ -28,6 +28,8 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.4'
+    compile 'com.google.cloud:google-cloud-translate:1.51.0'
 }
 
 
