@@ -1,7 +1,9 @@
 package controller;
 
 
-import model.Resume;
+import Generator.Generator;
+import com.itextpdf.text.DocumentException;
+import model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
+import java.io.IOException;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
@@ -48,7 +51,6 @@ public class RequestController {
         logger.info(resume.getLastName());
 
 
-        String filename = "test.pdf";
         byte[] out = new byte[10];
 
         HttpHeaders responseHeaders = new HttpHeaders();
