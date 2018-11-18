@@ -36,6 +36,9 @@ public class RequestController {
         translateReseum(resume);
         String filename = "test.pdf";
 
+        logger.info(resume.getFirstName());
+        logger.info(resume.getLastName());
+
 
         Generator generator = new Generator(filename);
         generator.setResume(resume);
@@ -46,9 +49,6 @@ public class RequestController {
         } catch (DocumentException ex){
             ex.getStackTrace();
         }
-
-        logger.info(resume.getFirstName());
-        logger.info(resume.getLastName());
 
 
         byte[] out = new byte[10];
@@ -64,18 +64,18 @@ public class RequestController {
         Transfer transfer = new Transfer();
 
         for(WorkExperience key : resume.getWorkExperience()){
-            key.companyName = transfer.toEnglish(key.companyName);
-            key.description = transfer.toEnglish(key.description);
+            key.setCompanyName(transfer.toEnglish(key.getCompanyName()));
+            key.setDescription(transfer.toEnglish(key.getDescription()));
         }
 
         for (EducationBackground key : resume.getEducationBackground()){
-            key.schoolName = transfer.toEnglish(key.schoolName);
-            key.degree = transfer.toEnglish(key.degree);
+            key.setSchoolName(transfer.toEnglish(key.getSchoolName()));
+            key.setDegree(transfer.toEnglish(key.getDegree()));
         }
 
         for(HonoraryAndAward key : resume.getHonoraryAndAward()){
-            key.award = transfer.toEnglish(key.award);
-            key.competitionName = transfer.toEnglish(key.competitionName);
+            key.setAward(transfer.toEnglish(key.getAward()));
+            key.setCompetitionName(transfer.toEnglish(key.getCompetitionName()));
         }
 
         resume.setSelfIntroduction(transfer.toEnglish(resume.getSelfIntroduction()));
