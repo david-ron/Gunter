@@ -1,75 +1,141 @@
-
-<h3 class="first">Resume</h3>
-<div>
-    <div class="ui-g">
-        <div class="ui-g-3">
-            <label>First Name:  </label>
-            <input  [(ngModel)]="resume.firstname"  placeholder="First Name" ngDefaultControl />
-          </div>
-      
-          <div  class="ui-g-3">
-            <label>Last Name:  </label>
-            <input  [(ngModel)]="resume.lastname" placeholder="Last Name" ngDefaultControl/>
-          </div>
-
-          <div class="ui-g-3">
-              <label>Contact Info: </label>
-             <input  [(ngModel)]="resume.contact" placeholder="Contact" ngDefaultControl/>
-          </div>
-    </div>
-
-    <div class="ui-g">
-        <!-- <p-card class="ui-g-6"> -->
-            <label> Education Background </label>
-             <br>
-            <div *ngFor="let item of resume.edu"> 
-                    <label>School:  </label> 
-                    <input type="text" [(ngModel)]="item.name"  pInputText ngDefaultControl/> <br>
-            
-                    <p-calendar [(ngModel)]="item.startTime" ngDefaultControl></p-calendar>
-                    <p-calendar [(ngModel)]="item.endTime" ngDefaultControl></p-calendar> <br>
-                    <textarea pInputTextarea [(ngModel)]="item.description" ngDefaultControl></textarea>
+<h2 class="first">
+    Resume</h2>
+<div class="content-section implementation">
+    <h3 class="first">Basic Information</h3>
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-2">
+            <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">
+                    <i class="fa fa-user"></i>
+                </span>
+                <input pInputText [(ngModel)]="resume.firstname" placeholder="First Name" />
             </div>
-            
-        <!-- </p-card> -->
-    </div>
-
-    <div  class="ui-g">
-      <!-- <p-card> -->
-          <label>Work Experience</label>
-          <label> Education Background </label> <br>
-            <div *ngFor="let item of resume.work"> 
-                    <label>Company:  </label> 
-                    <input type="text" [(ngModel)]="item.name"  pInputText ngDefaultControl/> <br>
-            
-                    <p-calendar [(ngModel)]="item.startTime"></p-calendar>
-                    <p-calendar [(ngModel)]="item.endTime"></p-calendar> <br>
-                    <textarea pInputTextarea [(ngModel)]="item.description"></textarea>
-            </div>
-      <!-- </p-card> -->
-    </div>
-
-    <div class="ui-g">
-      <!-- <p-card> -->
-          <label>Skills</label> <br>
-            <div *ngFor="let item of resume.skills; let i = index"> 
-                    <!-- <input  [(ngModel)]="item" placeholder="skill"/> <br> -->
-                    <input [(ngModel)]="resume.skills[i]"  placeholder="skill"  pInputText  />
-            </div>
-      <!-- </p-card> -->
-    </div>
-
-    <div class="ui-g">
-      <p-card> 
-        <label>Honor or Award</label>
-        <div *ngFor="let item of resume.awards"> 
-                <label>Award:  </label> 
-                <input type="text" [(ngModel)]="item.name"  pInputText ngDefaultControl/> 
-                <p-calendar [(ngModel)]="item.time"></p-calendar>    <br>
-                <textarea pInputTextarea [(ngModel)]="item.description"></textarea>
         </div>
-      </p-card>
+
+        <div class="ui-g-12 ui-md-2">
+            <div class="ui-inputgroup">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    <input pInputText [(ngModel)]="resume.lastname" placeholder="Last Name" ngDefaultControl />
+                </div>
+            </div>
+        </div>
     </div>
 
-    <p-button label="Click" (onClick)="handleClick($event)"></p-button>
-</div> 
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-2">
+            <div class="ui-inputgroup">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">
+                        <i class="fas fa-envelope-square"></i>
+                    </span>
+                    <input pInputText [(ngModel)]="resume.email" placeholder="Email" ngDefaultControl />
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-2">
+            <div class="ui-inputgroup">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">
+                        <i class="fas fa-phone"></i>
+                    </span>
+                    <input pInputText [(ngModel)]="resume.contact" placeholder="Contact" />
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-2">
+            <div class="ui-inputgroup">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                    <input pInputText [(ngModel)]="resume.addr" placeholder="Address" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h3>Education Background</h3>
+    <div class="ui-inputgroup">
+        <div class="ui-g ui-fluid" *ngFor="let item of resume.edu">
+            <div class="ui-g-12">
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon">School</span>
+                        <input type="text" [(ngModel)]="item.name" pInputText placeholder="School Name" />
+                    </div>
+                </div>
+
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <input type="text" [(ngModel)]="item.degree" pInputText placeholder="Degree" />
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <p-calendar [(ngModel)]="item.startTime"></p-calendar>
+                    </div>
+                </div>
+
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <p-calendar [(ngModel)]="item.endTime"></p-calendar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <h3>Work Experience</h3>
+    <div class="ui-g ui-fluid">
+        <div class="ui-inputgroup">
+            <div *ngFor="let item of resume.work">
+                <div class="ui-g-12 ui-md-4">
+                    <label>Company Name: </label>
+                    <input pInputText [(ngModel)]="item.name" />
+
+                    <p-calendar [(ngModel)]="item.startTime" placeholder="start time"></p-calendar>
+                    <p-calendar [(ngModel)]="item.endTime" placeholder="end time"></p-calendar>
+                    <textarea pInputTextarea [(ngModel)]="item.description" [rows]="6" [cols]="50" placeholder="description"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <h3>Skills</h3>
+    <div class="ui-g ui-fluid">
+        <div class="ui-inputgroup">
+            <div *ngFor="let item of resume.skills; let i = index">
+                <div class="ui-g-12 ui-md-12">
+                    <input pInputText [(ngModel)]="resume.skills[i]" placeholder="skill" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Honor or Award</h3>
+    <div class="ui-g ui-fluid">
+
+        <div *ngFor="let item of resume.awards">
+            <label>Award: </label>
+            <input type="text" [(ngModel)]="item.name" pInputText ngDefaultControl/>
+            <p-calendar [(ngModel)]="item.time"></p-calendar>
+            <br>
+            <textarea pInputTextarea [rows]="6" [cols]="50" [(ngModel)]="item.award"></textarea>
+        </div>
+
+    </div>
+    <p-button label="Submit" (onClick)="handleClick($event)"></p-button>
+
+</div>

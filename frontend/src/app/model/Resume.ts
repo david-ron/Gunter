@@ -10,4 +10,6 @@ export class Resume {
     edu: EduBackground[];
     skills: String[];
     awards: Award[];
+    email: String;
+    addr: String;
 }

@@ -21,13 +21,15 @@ export class UploadComponent implements OnInit {
   // });
 
   public resume: Resume = {
-    firstname : "123",
-    lastname : "345",
-    contact: "667",
+    firstname : "",
+    lastname : "",
     work: [{name: "567", startTime: new Date(), endTime: new Date(), description: ""}],
-    edu: [{name: "123", startTime: new Date(), endTime: new Date(), description: ""}],
+    edu: [{name: "123", startTime: new Date(), endTime: new Date(), degree: ""}],
     skills: ["testskill"],
-    awards: [{name: "test", time: new Date(), description: ""}],
+    awards: [{name: "test", time: new Date(), award: "first prize"}],
+    email: "",
+    contact: "",
+    addr: ""
   };
 
   constructor(private translateService: TranslateService) { }

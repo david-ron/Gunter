@@ -4,7 +4,8 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Resume } from '../model/Resume';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json',
+                              'Access-Control-Allow-Origin': 'localhost:4200' })
 };
 
 
@@ -13,7 +14,7 @@ const httpOptions = {
 })
 export class TranslateService {
 
-  private hostUrl = "http://localhost:25000/upload";
+  private hostUrl = "http://localhost:8080/upload";
 
   constructor(private http: HttpClient) { }
 
