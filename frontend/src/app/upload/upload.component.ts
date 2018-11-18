@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Resume } from '../model/Resume';
 import { EduBackground } from "../model/EduBackground";
+import { TranslateService } from '../service/translate.service';
 
 @Component({
   selector: 'app-upload',
@@ -29,14 +30,16 @@ export class UploadComponent implements OnInit {
     awards: [{name: "test", time: new Date(), description: ""}],
   };
 
-  constructor() { }
+  constructor(private translateService: TranslateService) { }
 
   ngOnInit() {
   }
 
-
-  arrayOne(n: number): any[] {
-    return Array(n);
+  handleClick(event: any){
+    console.log(this.resume);
+    this.translateService.translate(this.resume).subscribe(ret => {
+      console.log(ret);}
+    );
   }
 
 }

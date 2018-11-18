@@ -15,6 +15,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CardModule} from 'primeng/card';
 import {CalendarModule} from 'primeng/calendar';
 
+import { HttpClientModule }    from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +24,7 @@ import {CalendarModule} from 'primeng/calendar';
   ],
   imports: [
     AppRoutingModule,
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
