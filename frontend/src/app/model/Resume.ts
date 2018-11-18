@@ -1,12 +1,13 @@
 import { Experience } from "./Experience";
 import { EduBackground } from "./EduBackground";
+import { Award } from "./Award";
 
 export class Resume {
-    FirstName: String;
-    LastName: String;
-    ContactInfo: String;
-    WorkExperence: Experience[];
-    EducationBackground: EduBackground[];
-    SkillsOrTalent: String[];
-    HonoraryAndAward: String;
+    firstname: String;
+    lastname: String;
+    contact: String;
+    work: Experience[];
+    edu: EduBackground[];
+    skills: String[];
+    awards: Award[];
 }

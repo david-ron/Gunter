@@ -1,67 +1,73 @@
 
 <h3 class="first">Resume</h3>
 <div>
-  <form>
     <div class="ui-g">
         <div class="ui-g-3">
             <label>First Name:  </label>
-            <input type="text" pInputText />
+            <input  [(ngModel)]="resume.firstname"  placeholder="First Name" ngDefaultControl />
           </div>
       
           <div  class="ui-g-3">
             <label>Last Name:  </label>
-            <input type="text" pInputText />
+            <input  [(ngModel)]="resume.lastname" placeholder="Last Name" ngDefaultControl/>
           </div>
 
           <div class="ui-g-3">
               <label>Contact Info: </label>
-              <input type="text" pInputText />
+             <input  [(ngModel)]="resume.contact" placeholder="Contact" ngDefaultControl/>
           </div>
     </div>
 
     <div class="ui-g">
-        <p-card class="ui-g-6">
+        <!-- <p-card class="ui-g-6"> -->
             <label> Education Background </label>
-            <br>
-            <textarea pInputTextarea></textarea>
-        </p-card>
+             <br>
+            <div *ngFor="let item of resume.edu"> 
+                    <label>School:  </label> 
+                    <input type="text" [(ngModel)]="item.name"  pInputText ngDefaultControl/> <br>
+            
+                    <p-calendar [(ngModel)]="item.startTime" ngDefaultControl></p-calendar>
+                    <p-calendar [(ngModel)]="item.endTime" ngDefaultControl></p-calendar> <br>
+                    <textarea pInputTextarea [(ngModel)]="item.description" ngDefaultControl></textarea>
+            </div>
+            
+        <!-- </p-card> -->
     </div>
 
     <div  class="ui-g">
-      <p-card>
+      <!-- <p-card> -->
           <label>Work Experience</label>
-          <br>
-          <textarea pInputTextarea></textarea>
-      </p-card>
-    </div>
-
-    <div  class="ui-g">
-      <p-card>
-          <label>Education Background</label>
-          <span>
-            <label>School: </label>
-            <textarea pInputTextarea></textarea>
-          </span>
-      </p-card>
+          <label> Education Background </label> <br>
+            <div *ngFor="let item of resume.work"> 
+                    <label>Company:  </label> 
+                    <input type="text" [(ngModel)]="item.name"  pInputText ngDefaultControl/> <br>
+            
+                    <p-calendar [(ngModel)]="item.startTime"></p-calendar>
+                    <p-calendar [(ngModel)]="item.endTime"></p-calendar> <br>
+                    <textarea pInputTextarea [(ngModel)]="item.description"></textarea>
+            </div>
+      <!-- </p-card> -->
     </div>
 
     <div class="ui-g">
-      <p-card>
-          <label>Skills</label>
-          <span>
-              <textarea pInputTextarea></textarea>
-          </span>
-      </p-card>
+      <!-- <p-card> -->
+          <label>Skills</label> <br>
+            <div *ngFor="let item of resume.skills; let i = index"> 
+                    <!-- <input  [(ngModel)]="item" placeholder="skill"/> <br> -->
+                    <input [(ngModel)]="resume.skills[i]"  placeholder="skill"  pInputText  />
+            </div>
+      <!-- </p-card> -->
     </div>
 
     <div class="ui-g">
       <p-card> 
         <label>Honor or Award</label>
-        <span>
-          <input type="text" pInputText />
-        </span>
+        <div *ngFor="let item of resume.awards"> 
+                <label>Award:  </label> 
+                <input type="text" [(ngModel)]="item.name"  pInputText ngDefaultControl/> 
+                <p-calendar [(ngModel)]="item.time"></p-calendar>    <br>
+                <textarea pInputTextarea [(ngModel)]="item.description"></textarea>
+        </div>
       </p-card>
     </div>
-
-  </form>
 </div> 

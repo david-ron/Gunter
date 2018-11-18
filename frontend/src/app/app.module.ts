@@ -9,8 +9,11 @@ import {InputTextModule} from 'primeng/inputtext';
 import { AppRoutingModule } from './app-routing.module';
 import { UploadComponent } from './upload/upload.component';
 
+
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CardModule} from 'primeng/card';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -21,10 +24,12 @@ import {CardModule} from 'primeng/card';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     CheckboxModule,
     RadioButtonModule,
     InputTextModule,
-    CardModule
+    CardModule,
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
