@@ -28,7 +28,20 @@ public class RequestController {
 
     @RequestMapping(value = "/upload", produces = { "application/json" }, method = RequestMethod.POST)
     public @ResponseBody ResponseEntity translate(@RequestBody Resume resume){
-        //TODO
+        
+        translateReseum(resume);
+        String filename = "test.pdf";
+
+
+        Generator generator = new Generator(filename);
+        generator.setResume(resume);
+        try {
+            generator.generate();
+        } catch (IOException ex){
+            ex.getStackTrace();
+        } catch (DocumentException ex){
+            ex.getStackTrace();
+        }
 
         String filename = "test.pdf";
         byte[] out = new byte[10];
@@ -37,7 +50,30 @@ public class RequestController {
         responseHeaders.add("content-disposition", "attachment; filename=" + filename);
         responseHeaders.add("Content-Type", "pdf");
 
-
         return new ResponseEntity(out, responseHeaders, HttpStatus.OK);
+    }
+    
+    private void translateReseum(Resume resume){
+        Transfer transfer = new Transfer();
+
+        for(WorkExperience key : resume.getWorkExperience()){
+            key.companyName = transfer.toEnglish(key.companyName);
+            key.description = transfer.toEnglish(key.description);
+        }
+
+        for (EducationBackground key : resume.getEducationBackground()){
+            key.schoolName = transfer.toEnglish(key.schoolName);
+            key.degree = transfer.toEnglish(key.degree);
+        }
+
+        for(HonoraryAndAward key : resume.getHonoraryAndAward()){
+            key.award = transfer.toEnglish(key.award);
+            key.competitionName = transfer.toEnglish(key.competitionName);
+        }
+
+        resume.setSelfIntroduction(transfer.toEnglish(resume.getSelfIntroduction()));
+
+        resume.setAddress(transfer.toEnglish(resume.getAddress()));
+
     }
 }
